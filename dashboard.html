@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JENGEKA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #34495E;
+      margin: 0;
+    }
+
+    .app-header {
+      background-color: #90EE90;
+      padding: 15px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .app-header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #34495E;
+      font-weight: bold;
+    }
+
+    .app-header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    .app-body-main-content {
+      padding: 20px;
+    }
+    .about-description{
+      background color:red;
+    }
+    .tiles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .tile {
+      background-color: linear-gradient(90deg,aqua,orange,green);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      flex: 1 1 calc(33.333% - 20px);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .tile-header h3 {
+      margin: 10px 0 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #34495E;
+    }
+
+    .tile i {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: navy;
+    }
+
+    .tile.my-wallet {
+       background-color: #BDB76B;
+      color:olive;
+    }
+
+    .tile.deposit {
+      background-color: #FF9800;
+    }
+
+    .tile.account-status {
+      background-color: #2196F3;
+    }
+
+    .tile.signup-bonus {
+      background-color: green;
+    }
+
+    .tile.referral-program {
+      background-color: white;
+    }
+
+    .withdrawal-page,
+    .page {
+      display: none;
+      background-color: #34495E;
+      padding: 50px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 50px auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .container h2 {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .withdraw-button,
+    .back-button,
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    .banner {
+      display: none;
+      margin-bottom: 15px;
+      padding: 10px;
+      color: #4CAF50;
+      background-color: lightgreen;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .pending-dot {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color: green;
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+  .graph{
+    color: darkgreen;
+    font: sans-serif;
+    font-weight: bold;
+  }
+  .grah{
+    color:aqua;
+    font-weight: bold;
+  }
+  .ref{
+    border-radius:10px;
+    padding:10px;
+    color:green;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="app-header">
+      <h1>JENGEKA</h1>
+      <marquee>
+      <div class="graph">
+      <p>Ensure you activated your account before withdrawing. Deposit 40 KSH to verify.</p>
+      </div>
+      </marquee>
+    </header>
+
+    <!-- Main Content -->
+    <div class="app-body">
+      <div class="app-body-main-content">
+        <section class="service-section">
+          <div class="grah">
+          <h2>Dashboard</h2>
+          </div>
+          <div class="tiles">
+            <!-- Tile: My Wallet -->
+            <div class="tile my-wallet" onclick="showWithdrawalForm()">
+              <i class="fas fa-wallet"></i>
+              <div class="tile-header">
+                <h3>My Wallet</h3>
+                <p id="walletBalance">Balance: <strong>200 KSH</strong></p>
+              </div>
+            </div>
+
+            <!-- Tile: Direct Deposit -->
+            <div class="tile deposit" onclick="window.open('https://store.pesapal.com/jisorstmicro', '_blank');">
+              <i class="fas fa-piggy-bank"></i>
+              <div class="tile-header">
+                <h3>Direct Deposit</h3>
+              </div>
+            </div>
+
+            <!-- Tile: Account Status -->
+            <div class="tile account-status">
+              <i class="fas fa-user-check"></i>
+              <div class="tile-header">
+                <h3>Account Status</h3>
+                <p>Pending Verification</p>
+                <span class="pending-dot"></span>
+              </div>
+            </div>
+
+            <!-- Tile: Sign-Up Bonus -->
+            <div class="tile signup-bonus" onclick="showBonusPage()">
+              <i class="fas fa-gift"></i>
+              <div class="tile-header">
+                <h3>Sign-Up Bonus</h3>
+              </div>
+            </div>
+
+            <!-- Tile: Referral Program -->
+            <div class="tile referral-program" onclick="showReferralPage()">
+              <i class="fas fa-users"></i>
+              <div class="tile-header">
+                <h3>Referral Program</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdrawal Page -->
+  <div class="withdrawal-page" id="withdrawalForm">
+    <div class="container">
+      <div class="banner" id="successBanner">Request submitted successfully!</div>
+      <p>For a succesful withdraw ensure you deposited atleast 40ksh to keep your account active .</p>
+      <div class="ref">
+      <P>PAYBILL:700201</P>
+      <p>ACCOUNT:6560090271</p>
+      </div>
+      <h2>Enter Your Withdrawal Details</h2>
+      <label for="mpesaNumber">Mpesa Number:</label>
+      <input type="text" id="mpesaNumber" placeholder="Enter Mpesa Number" maxlength="10" />
+      <label for="withdrawAmount">Amount to Withdraw (min 100):</label>
+      <input type="number" id="withdrawAmount" placeholder="Enter Amount" />
+      <button class="withdraw-button" onclick="submitWithdrawal()">Withdraw</button>
+      <button class="back-button" onclick="goBackToDashboard()">Back</button>
+    </div>
+  </div>
+
+  <!-- Referral Page -->
+  <div class="page" id="referralPage">
+    <h2>Referral Program</h2>
+    <p>Share your referral link:</p>
+    <div class="ref">
+    <input type="text" class="ref" id="referralLink" value="https://tinyurl.com/JisortReferral" readonly />
+    </div>
+    <button onclick="copyReferralLink()">Copy Link</button>
+    <button class="back-button" onclick="goBackToDashboard()">Back</button>
+  </div>
+
+  <!-- Bonus Page -->
+  <div class="page" id="bonusPage">
+    <h2>Sign-Up Bonus</h2>
+    <p>Click below to activate your bonus:</p>
+    <button id="activateBonusBtn" onclick="activateBonus()">Activate Bonus</button>
+    <button class="back-button" onclick="goBackToDashboard()">Back</button>
+  </div>
+
+  <script>
+    let walletBalance = 200;
+    let bonusActivated = false;
+
+    function showWithdrawalForm() {
+      document.querySelector('.app-body').style.display = 'none';
+      document.getElementById('withdrawalForm').style.display = 'block';
+    }
+
+    function goBackToDashboard() {
+      document.querySelector('.app-body').style.display = 'block';
+      document.querySelectorAll('.page, .withdrawal-page').forEach(page => {
+        page.style.display = 'none';
+      });
+    }
+
+    function submitWithdrawal() {
+      const amount = parseInt(document.getElementById("withdrawAmount").value, 10);
+      if (amount >= 100 && amount <= walletBalance) {
+        walletBalance -= amount;
+        document.getElementById("walletBalance").innerHTML = `Balance: <strong>${walletBalance} KSH</strong>`;
+        alert("Withdrawal successful!");
+        goBackToDashboard();
+      } else {
+        alert("Invalid withdrawal amount.");
+      }
+    }
+
+    function showReferralPage() {
+      document.querySelector('.app-body').style.display = 'none';
+      document.getElementById('referralPage').style.display = 'block';
+    }
+
+    function showBonusPage() {
+      document.querySelector('.app-body').style.display = 'none';
+      document.getElementById('bonusPage').style.display = 'block';
+    }
+
+    function activateBonus() {
+      if (!bonusActivated) {
+        walletBalance += 200;
+        document.getElementById('walletBalance').innerHTML = `Balance: <strong>${walletBalance} KSH</strong>`;
+        document.getElementById('activateBonusBtn').disabled = true;
+        document.getElementById('activateBonusBtn').innerText = 'Bonus Activated';
+        bonusActivated = true;
+      }
+    }
+
+    function copyReferralLink() {
+      const referralLink = document.getElementById('referralLink');
+      referralLink.select();
+      document.execCommand('copy');
+      alert('Referral link copied to clipboard!');
+    }
+  </script>
+</body>
+
+</html>
