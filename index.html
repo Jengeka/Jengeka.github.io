@@ -253,6 +253,7 @@
       <input type="text" id="mpesaNumber" placeholder="Enter Mpesa Number" maxlength="10" />
       <label for="withdrawAmount">Amount to Withdraw (min 100):</label>
       <input type="number" id="withdrawAmount" placeholder="Enter Amount" />
+      <br></br>
       <button class="withdraw-button" onclick="submitWithdrawal()">Withdraw</button>
       <button class="back-button" onclick="goBackToDashboard()">Back</button>
     </div>
@@ -278,7 +279,7 @@
   </div>
 
   <script>
-    let walletBalance = 200;
+    let walletBalance = 0;
     let bonusActivated = false;
 
     function showWithdrawalForm() {
