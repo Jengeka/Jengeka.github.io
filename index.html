@@ -11,11 +11,12 @@
       font-family: Arial, sans-serif;
       background-color: #34495E;
       margin: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .app-header {
-      background-color: #90EE90;
-      padding: 15px 20px;
+      background-color: black;
+      padding: 10px 15px;
       color: white;
       text-align: center;
     }
@@ -35,9 +36,7 @@
     .app-body-main-content {
       padding: 20px;
     }
-    .about-description{
-      background color:red;
-    }
+
     .tiles {
       display: flex;
       flex-wrap: wrap;
@@ -46,7 +45,7 @@
     }
 
     .tile {
-      background-color: linear-gradient(90deg,aqua,orange,green);
+      background-color: linear-gradient(90deg, aqua, orange, green);
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -75,8 +74,8 @@
     }
 
     .tile.my-wallet {
-       background-color: #BDB76B;
-      color:olive;
+      background-color: #BDB76B;
+      color: olive;
     }
 
     .tile.deposit {
@@ -95,13 +94,20 @@
       background-color: white;
     }
 
+    .tile.transaction-history {
+      background-color: #8E44AD;
+      color: white;
+    }
+
     .withdrawal-page,
     .page {
       display: none;
-      background-color: #34495E;
-      padding: 50px;
+      background-color: limegreen;
+      padding: 90px;
       border-radius: 20px;
+      color: white;
       max-width: 600px;
+      font-weight: bold;
       margin: 50px auto;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     }
@@ -122,7 +128,8 @@
     .withdraw-button,
     .back-button,
     button {
-      background-color: #4CAF50;
+      background-color: darkorange;
+      gap: 20px;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -133,7 +140,7 @@
     }
 
     button:hover {
-      background-color: darkorange;
+      background-color: green;
     }
 
     .banner {
@@ -150,37 +157,245 @@
       display: inline-block;
       width: 30px;
       height: 30px;
-      background-color: green;
+      background-color: orange;
       border-radius: 50%;
       margin-top: 5px;
     }
-  .graph{
-    color: darkgreen;
-    font: sans-serif;
-    font-weight: bold;
+
+    .graph {
+      color: darkgreen;
+      font: sans-serif;
+      font-weight: bold;
+    }
+
+    .grah {
+      color: aqua;
+      font-weight: bold;
+    }
+
+    .ref {
+      border-radius: 10px;
+      padding: 10px;
+      color: green;
+    }
+
+    .moon {
+      padding: 20px;
+      width: 20px;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #2C3E50;
+      color: white;
+    }
+
+    .app-header.dark-mode {
+      background-color: black;
+    }
+
+    .tile.dark-mode {
+      background-color: linear-gradient(90deg, #2C3E50, #34495E);
+    }
+
+    .tile-header h3.dark-mode {
+      color: #ECF0F1;
+    }
+
+    .tile i.dark-mode {
+      color: black;
+    }
+    .close-modal {
+      margin-top: 20px;
+      font-size: 50px;
+      font-weight: bold;
+      content-align: bottom;
+      cursor: pointer;
+      color: red;
+    }
+
+    .close-modal:hover {
+      color: #333;
+    }
+    #idCardUploadPage {
+      display: none;
+      background-color: violet;
+      padding: 70px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 50px auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    #idCardUploadForm {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #idCardUploadForm input[type="file"] {
+      margin-bottom: 30px;
+    }
+
+    .fa-check-circle {
+      color: limegreen;
+      font-size: 30px;
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Support Icon */
+    .support-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: limegreen;
+      color: black;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .support-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .support-icon i {
+      font-size: 24px;
+    }
+
+    /* Support Modal */
+    .support-modal {
+      display: none;
+      position: fixed;
+      width: 90%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .support-modal h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: green;
+    }
+
+    .support-modal textarea {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      resize: none;
+    }
+
+    .support-modal button {
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .support-modal button:hover {
+      background-color: orange;
+    }
+    /* Upload Progress Bar */
+.upload-progress {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 10px;
+  background-color: #2196F3;
+  border-radius: 5px;
+  transition: width 5s linear;
+}
+
+/* Saving Animation */
+.saving-animation {
+  margin-top: 15px;
+  font-size: 20px;
+  color: green;
+}
+
+.saving-animation i {
+  margin-right: 10px;
+}
+
+/* Success Banner */
+.success-banner {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.success-banner i {
+  margin-right: 10px;
+}
+
+/* Verifying Animation */
+.pending-dot {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: orange;
+  border-radius: 50%;
+  margin-top: 5px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  .grah{
-    color:aqua;
-    font-weight: bold;
+  50% {
+    transform: scale(1.1);
   }
-  .ref{
-    border-radius:10px;
-    padding:10px;
-    color:green;
+  100% {
+    transform: scale(1);
   }
+}
   </style>
 </head>
 
 <body>
+  <!-- App Content -->
   <div class="app">
     <!-- Header -->
     <header class="app-header">
       <h1>JENGEKA</h1>
       <marquee>
-      <div class="graph">
-      <p>Ensure you activated your account before withdrawing. Deposit 40 KSH to verify.</p>
-      </div>
+        <div class="graph">
+          <p>Ensure you activated your account before withdrawing. Deposit 40 KSH to verify.</p>
+        </div>
       </marquee>
+      <div class="moon">
+        <i class="fas fa-moon" class="moon" onclick="toggleDarkMode()" style="position: absolute; top: 20px; right: 20px; cursor: pointer;"></i>
+      </div>
     </header>
 
     <!-- Main Content -->
@@ -188,7 +403,7 @@
       <div class="app-body-main-content">
         <section class="service-section">
           <div class="grah">
-          <h2>Dashboard</h2>
+            <h2>Dashboard</h2>
           </div>
           <div class="tiles">
             <!-- Tile: My Wallet -->
@@ -209,7 +424,7 @@
             </div>
 
             <!-- Tile: Account Status -->
-            <div class="tile account-status">
+            <div class="tile account-status" onclick="showIdCardUploadPage()">
               <i class="fas fa-user-check"></i>
               <div class="tile-header">
                 <h3>Account Status</h3>
@@ -233,6 +448,14 @@
                 <h3>Referral Program</h3>
               </div>
             </div>
+
+            <!-- Tile: Transaction History -->
+            <div class="tile transaction-history" onclick="showTransactionHistoryPage()">
+              <i class="fas fa-history"></i>
+              <div class="tile-header">
+                <h3>Transaction History</h3>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -243,11 +466,7 @@
   <div class="withdrawal-page" id="withdrawalForm">
     <div class="container">
       <div class="banner" id="successBanner">Request submitted successfully!</div>
-      <p>For a succesful withdraw ensure you deposited atleast 40ksh to keep your account active .</p>
-      <div class="ref">
-      <P>PAYBILL:700201</P>
-      <p>ACCOUNT:6560090271</p>
-      </div>
+      <p>For a successful withdraw ensure you deposited at least 40 KSH.</p>
       <h2>Enter Your Withdrawal Details</h2>
       <label for="mpesaNumber">Mpesa Number:</label>
       <input type="text" id="mpesaNumber" placeholder="Enter Mpesa Number" maxlength="10" />
@@ -264,7 +483,7 @@
     <h2>Referral Program</h2>
     <p>Share your referral link:</p>
     <div class="ref">
-    <input type="text" class="ref" id="referralLink" value="https://tinyurl.com/JisortReferral" readonly />
+      <input type="text" class="ref" id="referralLink" value="https://tinyurl.com/JisortReferral" readonly />
     </div>
     <button onclick="copyReferralLink()">Copy Link</button>
     <button class="back-button" onclick="goBackToDashboard()">Back</button>
@@ -278,9 +497,73 @@
     <button class="back-button" onclick="goBackToDashboard()">Back</button>
   </div>
 
+  <!-- Transaction History Page -->
+  <div class="page" id="transactionHistoryPage">
+    <h2>Transaction History</h2>
+    <ul id="transactionList"></ul>
+    <button class="back-button" onclick="goBackToDashboard()">Back</button>
+  </div>
+
+  <!-- ID Card Upload Page -->
+<div class="page" id="idCardUploadPage">
+  <h2>Account Verification</h2>
+  <p>Upload your ID card photo for verification:</p>
+  <form id="idCardUploadForm">
+    <input class="fas fa-upload" type="file" id="idCardFile" accept="image/*" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div class="upload-progress" id="uploadProgress" style="display: none;">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="saving-animation" id="savingAnimation" style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i> Saving...
+  </div>
+  <div class="success-banner" id="successBanner" style="display: none;">
+    <i class="fas fa-check-circle"></i> ID photo uploaded successfully!
+  </div>
+  <br></br>
+  <button class="back-button" onclick="goBackToDashboard()">Back</button>
+</div>
+
+  <!-- Support Icon -->
+  <div class="support-icon" onclick="openSupportModal()">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+
+  <!-- Support Modal -->
+  <div class="support-modal" id="supportModal">
+    <h2>Contact Support</h2>
+    <span class="close-modal" onclick="closeSupportModal()">&times;</span>
+    <textarea id="supportMessage" placeholder="Type your message here..."></textarea>
+    <button onclick="redirectToWhatsApp()">Send via WhatsApp</button>
+  </div>
+
   <script>
-    let walletBalance = 0;
+    let walletBalance = 200;
     let bonusActivated = false;
+    let loanTaken = false;
+    const transactions = [];
+
+    // Open Support Modal
+    function openSupportModal() {
+      document.getElementById('supportModal').style.display = 'block';
+    }
+     // Close Support Modal
+     function closeSupportModal() {
+       document.getElementById('supportModal').style.display = 'none';
+    }
+    // Redirect to WhatsApp
+    function redirectToWhatsApp() {
+      const message = document.getElementById('supportMessage').value;
+      if (message.trim() === '') {
+        alert('Please enter a message.');
+        return;
+      }
+
+      const phoneNumber = '0797762011'; // WhatsApp number
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
 
     function showWithdrawalForm() {
       document.querySelector('.app-body').style.display = 'none';
@@ -296,8 +579,10 @@
 
     function submitWithdrawal() {
       const amount = parseInt(document.getElementById("withdrawAmount").value, 10);
+      const mpesaNumber = document.getElementById("mpesaNumber").value;
       if (amount >= 100 && amount <= walletBalance) {
         walletBalance -= amount;
+        transactions.push({ type: 'Withdrawal', amount: amount, number: mpesaNumber });
         document.getElementById("walletBalance").innerHTML = `Balance: <strong>${walletBalance} KSH</strong>`;
         alert("Withdrawal successful!");
         goBackToDashboard();
@@ -319,6 +604,7 @@
     function activateBonus() {
       if (!bonusActivated) {
         walletBalance += 200;
+        transactions.push({ type: 'Bonus', amount: 200 });
         document.getElementById('walletBalance').innerHTML = `Balance: <strong>${walletBalance} KSH</strong>`;
         document.getElementById('activateBonusBtn').disabled = true;
         document.getElementById('activateBonusBtn').innerText = 'Bonus Activated';
@@ -332,7 +618,72 @@
       document.execCommand('copy');
       alert('Referral link copied to clipboard!');
     }
+
+    function showTransactionHistoryPage() {
+      const transactionList = document.getElementById('transactionList');
+      transactionList.innerHTML = '';
+      transactions.forEach(transaction => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${transaction.type}: ${transaction.amount} KSH to ${transaction.number || 'N/A'}`;
+        transactionList.appendChild(listItem);
+      });
+      document.querySelector('.app-body').style.display = 'none';
+      document.getElementById('transactionHistoryPage').style.display = 'block';
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const tiles = document.querySelectorAll('.tile');
+      tiles.forEach(tile => tile.classList.toggle('dark-mode'));
+      const tileHeaders = document.querySelectorAll('.tile-header h3');
+      tileHeaders.forEach(header => header.classList.toggle('dark-mode'));
+      const icons = document.querySelectorAll('.tile i');
+      icons.forEach(icon => icon.classList.toggle('dark-mode'));
+    }
+
+    function showIdCardUploadPage() {
+            document.querySelector('.app-body').style.display = 'none';
+      document.getElementById('idCardUploadPage').style.display = 'block';
+    }
+    function handleIdCardUpload(event) {
+     event.preventDefault();
+     const file = document.getElementById('idCardFile').files[0];
+     if (file) {
+      // Show upload progress bar
+      document.getElementById('uploadProgress').style.display = 'block';
+      const progressBar = document.getElementById('progressBar');
+      progressBar.style.width = '100%';
+      alert('ID photo Uploaded Succesfully');
+
+    // Simulate upload process for 2 seconds
+       setTimeout(() => {
+      // Hide progress bar and show saving animation
+      document.getElementById('savingAnimation').style.display = 'block';
+
+      // Simulate saving process for 5 seconds
+      setTimeout(() => {
+        // Hide saving animation and show success banner
+        document.getElementById('savingAnimation').style.display = 'none';
+        document.getElementById('successBanner').style.display = 'block';
+        alert('Saved succesfully,verification starts!');
+        // Update account status
+        const accountStatusTile = document.querySelector('.tile.account-status');
+        accountStatusTile.querySelector('p').innerText = 'Verifying...';
+        accountStatusTile.querySelector('.pending-dot').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+        // Hide success banner after 10 seconds
+        setTimeout(() => {
+          document.getElementById('successBanner').style.display = 'none';
+        }, 1000);
+      }, 2000);
+    }, 5000);
+  } else {
+    alert('Please select a file to upload.');
+  }
+}
+ document.getElementById('idCardUploadForm').addEventListener('submit', handleIdCardUpload);   
   </script>
 </body>
 
 </html>
+      
