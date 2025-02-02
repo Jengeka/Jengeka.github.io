@@ -219,7 +219,7 @@
     }
     #idCardUploadPage {
       display: none;
-      background-color: violet;
+      background-color:black;
       padding: 70px;
       border-radius: 20px;
       max-width: 600px;
@@ -249,7 +249,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: limegreen;
+      background-color: blue;
       color: black;
       width: 50px;
       height: 50px;
@@ -268,9 +268,18 @@
     }
 
     .support-icon i {
-      font-size: 24px;
+      font-size: 34px;
+      font-weight: bold;
+      color: white;
     }
+    
 
+#currentTime {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: -120px;
+    color: violet;
+}
     /* Support Modal */
     .support-modal {
       display: none;
@@ -327,14 +336,23 @@
   height: 10px;
   background-color: #2196F3;
   border-radius: 5px;
-  transition: width 5s linear;
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* Saving Animation */
 .saving-animation {
   margin-top: 15px;
   font-size: 20px;
-  color: green;
+  color: #2196F3;
 }
 
 .saving-animation i {
@@ -358,27 +376,36 @@
 }
 
 /* Verifying Animation */
-.pending-dot {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-color: orange;
-  border-radius: 50%;
-  margin-top: 5px;
-  animation: pulse 1.5s infinite;
+.verifying-animation {
+  margin-top: 15px;
+  font-size: 20px;
+  color: green;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+.verifying-animation i {
+  margin-right: 10px;
 }
+
+/* Verified Status */
+.verified-status {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #4CAF50;
+}
+
+.verified-status i {
+  margin-right: 10px;
+}
+ .number{
+   font-size: 16px;
+   color: orange;
+   font-weight: bold;
+ }
+  .woo{
+    font-size: 16px;
+    font-weight: bold;
+    color: limegreen;
+  }
   </style>
 </head>
 
@@ -393,10 +420,17 @@
           <p>Ensure you activated your account before withdrawing. Deposit 40 KSH to verify.</p>
         </div>
       </marquee>
-      <div class="moon">
-        <i class="fas fa-moon" class="moon" onclick="toggleDarkMode()" style="position: absolute; top: 20px; right: 20px; cursor: pointer;"></i>
-      </div>
     </header>
+    <div id="topBar">
+    <span id="currentTime"></span>
+    <i class="fas fa-moon moon" onclick="toggleDarkMode()">Mode</i>
+    </div>
+    <div class="woo">
+    <span>Account Number:</span>
+    </div>
+    <div class="number">
+      <span class="fas fa-tag" color="orange">6560090271</span>
+    </div>
 
     <!-- Main Content -->
     <div class="app-body">
@@ -428,7 +462,7 @@
               <i class="fas fa-user-check"></i>
               <div class="tile-header">
                 <h3>Account Status</h3>
-                <p>Pending Verification</p>
+                <p>UNVERIFIED</p>
                 <span class="pending-dot"></span>
               </div>
             </div>
@@ -466,7 +500,9 @@
   <div class="withdrawal-page" id="withdrawalForm">
     <div class="container">
       <div class="banner" id="successBanner">Request submitted successfully!</div>
-      <p>For a successful withdraw ensure you deposited at least 40 KSH.</p>
+      <p>For a successful withdraw ensure you deposited at least 50 KSH to keep account Active.Ignore once paid.</p>
+      <span>PAYBILL:700201</span>
+      <span>ACCOUNT:6560090271</span>
       <h2>Enter Your Withdrawal Details</h2>
       <label for="mpesaNumber">Mpesa Number:</label>
       <input type="text" id="mpesaNumber" placeholder="Enter Mpesa Number" maxlength="10" />
@@ -521,6 +557,9 @@
   <div class="success-banner" id="successBanner" style="display: none;">
     <i class="fas fa-check-circle"></i> ID photo uploaded successfully!
   </div>
+  <div class="verifying-animation" id="verifyingAnimation" style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i> Verifying...
+  </div>
   <br></br>
   <button class="back-button" onclick="goBackToDashboard()">Back</button>
 </div>
@@ -529,6 +568,7 @@
   <div class="support-icon" onclick="openSupportModal()">
     <i class="fab fa-whatsapp"></i>
   </div>
+  <span>@woo 2025©</span>
 
   <!-- Support Modal -->
   <div class="support-modal" id="supportModal">
@@ -539,7 +579,7 @@
   </div>
 
   <script>
-    let walletBalance = 200;
+    let walletBalance = 0;
     let bonusActivated = false;
     let loanTaken = false;
     const transactions = [];
@@ -646,18 +686,18 @@
       document.getElementById('idCardUploadPage').style.display = 'block';
     }
     function handleIdCardUpload(event) {
-     event.preventDefault();
-     const file = document.getElementById('idCardFile').files[0];
-     if (file) {
-      // Show upload progress bar
-      document.getElementById('uploadProgress').style.display = 'block';
-      const progressBar = document.getElementById('progressBar');
-      progressBar.style.width = '100%';
-      alert('ID photo Uploaded Succesfully');
-
-    // Simulate upload process for 2 seconds
-       setTimeout(() => {
+  event.preventDefault();
+  const file = document.getElementById('idCardFile').files[0];
+  if (file) {
+    // Show upload progress bar
+    document.getElementById('uploadProgress').style.display = 'block';
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.width = '100%';
+    // Simulate upload process for 5 seconds
+    setTimeout(() => {
       // Hide progress bar and show saving animation
+      document.getElementById('uploadProgress').style.display = 'none';
+      alert('ID Uploaded succesfully');
       document.getElementById('savingAnimation').style.display = 'block';
 
       // Simulate saving process for 5 seconds
@@ -665,23 +705,40 @@
         // Hide saving animation and show success banner
         document.getElementById('savingAnimation').style.display = 'none';
         document.getElementById('successBanner').style.display = 'block';
-        alert('Saved succesfully,verification starts!');
-        // Update account status
-        const accountStatusTile = document.querySelector('.tile.account-status');
-        accountStatusTile.querySelector('p').innerText = 'Verifying...';
-        accountStatusTile.querySelector('.pending-dot').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
-        // Hide success banner after 10 seconds
+        // Show verifying animation
+        document.getElementById('verifyingAnimation').style.display = 'block';
+
+        // Simulate verifying process for 10 seconds
         setTimeout(() => {
-          document.getElementById('successBanner').style.display = 'none';
-        }, 1000);
-      }, 2000);
+          // Hide verifying animation and update account status to Verified
+          document.getElementById('verifyingAnimation').style.display = 'none';
+          alert('Verification success');
+          const accountStatusTile = document.querySelector('.tile.account-status');
+          accountStatusTile.querySelector('p').innerText = 'Verified';
+          accountStatusTile.querySelector('.pending-dot').innerHTML = '<i class="fas fa-check-circle" style="color: green; font-size: 30px;"></i>';
+        }, 10000);
+      }, 5000);
     }, 5000);
   } else {
     alert('Please select a file to upload.');
   }
 }
- document.getElementById('idCardUploadForm').addEventListener('submit', handleIdCardUpload);   
+
+document.getElementById('idCardUploadForm').addEventListener('submit', handleIdCardUpload);
+function updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// Update time every second
+setInterval(updateTime, 1000);
+
+// Initialize time on page load
+updateTime();
   </script>
 </body>
 
