@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -385,7 +384,12 @@
 .verifying-animation i {
   margin-right: 10px;
 }
-
+. deposit-page{
+  font-size:40px;
+  font-weight:bold;
+  color:white;
+}
+    
 /* Verified Status */
 .verified-status {
   margin-top: 15px;
@@ -450,7 +454,7 @@
             </div>
 
             <!-- Tile: Direct Deposit -->
-            <div class="tile deposit" onclick="window.open('https://store.pesapal.com/jisorstmicro', '_blank');">
+            <div class="tile deposit" onclick="showDepositPage()">
               <i class="fas fa-piggy-bank"></i>
               <div class="tile-header">
                 <h3>Direct Deposit</h3>
@@ -495,7 +499,11 @@
       </div>
     </div>
   </div>
-
+  <!-- Deposit Page -->
+<div class="deposit-page" id="DepositPage">
+  <span>PAYBILL:700201</span>
+  <span>ACCOUNT:6560090271</span>
+</div>
   <!-- Withdrawal Page -->
   <div class="withdrawal-page" id="withdrawalForm">
     <div class="container">
